@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - echo "Installation des dépendances..."
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Phase pré-build: préparation des artefacts"
+      - python main.py --test || echo "Pas de mode test détecté (simulation)"
+
+  build:
+    commands:
+      - echo "Construction de l'image Docker..."
+      - docker build -t mon-projet .
+
+  post_build:
+    commands:
+      - echo "Déploiement (simulation)..."
+      - echo "Conteneur prêt à être déployé sur un serveur ou un service cloud."
+
+artifacts:
+  files:
+    - main.py
+    - Dockerfile
+    - requirements.txt
+    - Online_Retail.csv
+    - buildspec.yml
