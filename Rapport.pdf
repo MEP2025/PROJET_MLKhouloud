@@ -1,0 +1,25 @@
+Introduction & Objectif du Projet
+•	Contexte : vente en ligne, gestion de stock.
+•	Problématique : éviter les ruptures et les excédents.
+•	Objectif : prédire les ventes futures par produit et pays.
+Description des Données
+•	Source : fichier Online_Retail.csv.
+•	Colonnes clés : InvoiceDate, Quantity, UnitPrice, StockCode, Country, CustomerID.
+•	Nettoyage effectué :
+o	Suppression des annulations (InvoiceNo commençant par 'C').
+o	Suppression des valeurs aberrantes (UnitPrice < 100, Quantity < 1000).
+o	Conversion des dates et création de variables : InvoiceHour, InvoiceDay, InvoiceMonth.
+ Modèle de Prévision
+•	Objectif ML : régression pour estimer les quantités futures.
+•	Algorithme choisi : RandomForestRegressor.
+•	Variables d’entrée : StockCode, Country, InvoiceMonth, TotalPrice, etc.
+•	Évaluation : RMSE, MAE, R².
+•	Stratégie temporelle : split train/test chronologique.
+– Déploiement
+•	Flask : simple app web avec un point d’entrée (/) pour affichage ou extension future.
+•	Docker :
+o	Conteneurisation de l'app pour portabilité.
+o	Fichier Dockerfile & requirements.txt.
+  Conclusion & Perspectives
+•	Résultats attendus : réduction des ruptures, meilleure rotation des stocks.
+•	Limitations : données limitées à une année, pas d’information sur les stocks actuels.
